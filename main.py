@@ -27,14 +27,14 @@ def matrices_mean(matrices):
 
 
 # Diccionario para almacenar los numeros
-numbers = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
+numbers = [[], [], [], [], [], [], [],  [], [], []]
 
 for i in range(len(digits.target)):
     new_matrix = cv2.resize(digits.images[i], (8, 8))
     numbers[digits.target[i]].append(new_matrix)
 
 # Diccionario para almacenar los numeros promedios
-average_number = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: []}
+average_number = [[], [], [], [], [], [], [],  [], [], []]
 
 for i in range(len(average_number)):
     average_number[i] = matrices_mean(numbers[i])
