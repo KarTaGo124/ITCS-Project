@@ -39,5 +39,8 @@ average_number = [[], [], [], [], [], [], [],  [], [], []]
 for i in range(len(average_number)):
     average_number[i] = matrices_mean(numbers[i])
 
-for i in average_number[0]:
+
+# Aca cambias el numero de abajo, por ejemplo aca vez average_number[1], te dara el promedio del numero 1
+# Lo cambias con los digitos del 0 al 9
+for i in average_number[1]:
     print(i)
