@@ -31,9 +31,9 @@ def matrices_mean(matrices):
     return mean
 
 
-numbers = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: []}
+numbers = [[], [], [], [], [], [], [], [], [], [], []]
 
-average_number = {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: []}
+average_number = [[], [], [], [], [], [], [], [], [], [], []]
 
 for i in range(len(digits.target)):
     new_matrix = cv2.resize(digits.images[i], (8, 8))
