@@ -1,6 +1,7 @@
-from sklearn import datasets
 import cv2
+from sklearn import datasets
 
+import arrays
 
 # Indicaciones escritas en 30 segundos mientras brossard explicaba
 # Promedio de todos los numeros, tipo ves todos
@@ -12,32 +13,25 @@ import cv2
 # del otro numero + raiz cuadrada de tu numero nuevo - el 2do pixel del numero de arriba;
 # 2 - 3 jueces tienen que estar de acuerdo
 
+# Input
 digits = datasets.load_digits()
 
+# Números
+numbers = arrays.new_matrix(10)
 
-# Promedio de la matriz
-def matrices_mean(matrices):
-    initial_matrix = [[0] * 8 for _ in range(8)]
-    for matrix in matrices:
-        for i in range(8):
-            for j in range(8):
-                initial_matrix[i][j] += matrix[i][j]
-    mean = [[round(initial_matrix[i][j] / len(matrices), 2) for j in range(8)] for i in range(8)]
-    return mean
+# Promedio de números
+average_number = arrays.new_matrix(10)
 
-
-# Diccionario para almacenar los numeros
-numbers = [[], [], [], [], [], [], [],  [], [], []]
+# Constante de pixeles por dimensión
+pixels = 8
 
 for i in range(len(digits.target)):
-    new_matrix = cv2.resize(digits.images[i], (8, 8))
+    new_matrix = cv2.resize(digits.images[i], (pixels, pixels))
     numbers[digits.target[i]].append(new_matrix)
 
-# Diccionario para almacenar los numeros promedios
-average_number = [[], [], [], [], [], [], [],  [], [], []]
 
 for i in range(len(average_number)):
-    average_number[i] = matrices_mean(numbers[i])
+    average_number[i] = arrays.matrix_mean(numbers[i], size=pixels)
 
 
 # Aca cambias el numero de abajo, por ejemplo aca vez average_number[1], te dara el promedio del numero 1
