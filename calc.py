@@ -1,5 +1,3 @@
-
-
 def euclidean_distance(*dimensions: int):
     """
     Calculate distances with Euclidean formula.

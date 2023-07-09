@@ -28,6 +28,7 @@ def matrix_mean(matrices, size: int = 8):
                 initial_matrix[i][j] += matrix[i][j]
 
     matrices_size = len(matrices)
-    mean = [[round(initial_matrix[i][j] / matrices_size, 2) for j in range(size)] for i in range(size)]
+    mean = [[int(round(initial_matrix[i][j] / matrices_size)) for j in range(size)] for i in range(size)]
+
     return mean
 
