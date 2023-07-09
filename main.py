@@ -14,13 +14,13 @@ numbers = arrays.new_matrix(10)
 average_number = arrays.new_matrix(10)
 
 # Constante de pixeles por dimensión
-pixels = 8
+PIXELS = 8
 
 for i in range(len(digits.target)):
-    new_matrix = cv2.resize(digits.images[i], (pixels, pixels))
+    new_matrix = cv2.resize(digits.images[i], (PIXELS, PIXELS))
     numbers[digits.target[i]].append(new_matrix)
 
 
 for i in range(len(average_number)):
-    average_number[i] = arrays.matrix_mean(numbers[i], size=pixels)
+    average_number[i] = arrays.matrix_mean(numbers[i], size=PIXELS)
 

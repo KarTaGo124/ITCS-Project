@@ -1,6 +1,9 @@
+
+
 def new_matrix(size, fill_value=None):
     """
     Create a new simple matrix.
+    @OcZi
     :param size: size of 2nd dimension.
     :param fill_value: value to fill 2nd dimension.
     :return: matrix of empty (or filled) arrays.
@@ -17,6 +20,7 @@ def new_matrix(size, fill_value=None):
 def matrix_mean(matrices, size: int = 8):
     """
     Mean of matrices.
+    @Falaxsa
     :param matrices: matrices to calculate mean.
     :param size: size of array output.
     :return: array mean of matrices.
