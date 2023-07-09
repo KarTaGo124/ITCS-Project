@@ -11,4 +11,5 @@ for i in range(0, 10):
         print("")
     print("")
 
+# @KarTaGo124
 
