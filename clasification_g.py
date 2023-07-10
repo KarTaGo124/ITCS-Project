@@ -52,4 +52,4 @@ print(ordered)
 # Accessing by key index
 keys = list(ordered.keys())
 
-main.print_ai(keys[0])
+main.print_ai(keys)

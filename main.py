@@ -16,6 +16,7 @@ average_number = arrays.new_matrix(10)
 # Constante de pixeles por dimensión
 PIXELS = 8
 
+
 for i in range(len(digits.target)):
     new_matrix = cv2.resize(digits.images[i], (PIXELS, PIXELS))
     numbers[digits.target[i]].append(new_matrix)
@@ -30,7 +31,7 @@ def digit_by_index(i: int):
 
 def read_number_image():
     # Usamos cv2.imread para leer la imagen en escala de grises
-    img_array = cv2.imread("ejemplo.png", cv2.IMREAD_GRAYSCALE)
+    img_array = cv2.imread("image.png", cv2.IMREAD_GRAYSCALE)
     # Usamos cv2.resize para cambiar el tamaño de la imagen a 8x8
     nueva_img = cv2.resize(img_array, (8, 8))
 
@@ -42,8 +43,6 @@ def read_number_image():
     return nueva_img
 
 
-image = read_number_image()
-
 def same_elements(array) -> bool:
     first = array[0]
     for elem in range(1, len(array)):
@@ -51,15 +50,27 @@ def same_elements(array) -> bool:
             return False
     return True
 
-def print_ai(*array):
+
+def print_ai(array):
     colours = Fore.RGB(124, 252, 0)
     print(f"{colours}Hola, ¡soy la inteligencia artificial!")
 
-    if len(array) < 2 or same_elements(array):
+    if len(array) == 10:
         print(f"{colours}He detectado que el digito es el número {array[0]}!")
     else:
-        print(f"{colours}He detectado que el digito se parece a los números:")
-        print(array)
+        if array[0] == array[1] == array[2]:
+            print(f"{colours}He detectado que el digito es {array[0]}:")
+        elif array[0] == array[1] or array[1] == array[2] or array[0] == array[2]:
+            print(f"{colours}He detectado que el digito se parece al numero {array[0]}:")
+        else:
+            freq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            cnt = 0
+            while 5 not in freq:
+                freq[array[cnt]] += 1
+                cnt += 1
+
+            print(f"{colours}Y despues de llamar a {cnt} jueces")
+            print(f"{colours}Doy el veredicto que el digito se parece al numero {freq.index(5)}")
 
     print(f"{colours}¿Estás satisfecho con el resultado?")
     answer = input(":").lower()
@@ -70,3 +81,7 @@ def print_ai(*array):
         answer = input(":").lower()
         if answer == "no digas eso papu":
             print(f"{colours}Tienes razón, pronto mejoraré :)")
+
+
+image = read_number_image()
+
