@@ -39,17 +39,14 @@ def calculate_distances(image_array, to_compare: dict[str, list]):
 
 # Average linked to his digit
 average_index = {main.digit_by_index(i): main.average_number[i] for i in range(len(main.average_number))}
-print(average_index)
 
 # Calculate distances of image to each digit
 distances = calculate_distances(main.image, average_index)
-print(distances)
 
 # Ordered distances
 ordered = dict_sorted_digits(distances)
-print(ordered)
 
 # Accessing by key index
 keys = list(ordered.keys())
 
-main.print_ai(keys)
+main.print_ai(keys, mean=True)

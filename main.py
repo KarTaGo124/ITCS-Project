@@ -16,7 +16,6 @@ average_number = arrays.new_matrix(10)
 # Constante de pixeles por dimensión
 PIXELS = 8
 
-
 for i in range(len(digits.target)):
     new_matrix = cv2.resize(digits.images[i], (PIXELS, PIXELS))
     numbers[digits.target[i]].append(new_matrix)
@@ -43,30 +42,24 @@ def read_number_image():
     return nueva_img
 
 
-def same_elements(array) -> bool:
-    first = array[0]
-    for elem in range(1, len(array)):
-        if elem != first:
-            return False
-    return True
-
-
-def print_ai(array):
+def print_ai(array, mean: bool = False):
     colours = Fore.RGB(124, 252, 0)
     print(f"{colours}Hola, ¡soy la inteligencia artificial!")
 
-    if len(array) == 10:
+    if mean:
         print(f"{colours}He detectado que el digito es el número {array[0]}!")
     else:
         if array[0] == array[1] == array[2]:
-            print(f"{colours}He detectado que el digito es {array[0]}:")
-        elif array[0] == array[1] or array[1] == array[2] or array[0] == array[2]:
-            print(f"{colours}He detectado que el digito se parece al numero {array[0]}:")
+            print(f"{colours}He detectado que el digito es el número {array[0]}:")
+        elif (best := elem_matches(array[:3])) != -1:
+            print(f"{colours}He detectado que el digito se parece al número {best}:")
         else:
+            #     : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
             freq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             cnt = 0
             while 5 not in freq:
-                freq[array[cnt]] += 1
+                number = array[cnt]
+                freq[number] += 1
                 cnt += 1
 
             print(f"{colours}Y despues de llamar a {cnt} jueces")
@@ -85,3 +78,31 @@ def print_ai(array):
 
 image = read_number_image()
 
+
+def elem_matches(array):
+    """
+    Get the number with most matches or -1
+    :param array: array of numbers
+    :return: get number with most matches (or -1)
+    """
+    matches = {}
+    for index in range(len(array)):
+        elem1 = array[index]
+        for j, elem2 in enumerate(array):
+            if index == j:
+                continue
+
+            if elem1 == elem2:
+                if elem1 not in matches:
+                    matches[elem1] = 1
+                else:
+                    matches[elem1] += 1
+
+    best = -1
+    repeated = -1
+    for num, repeats in matches.items():
+        if repeats > 1 and repeats > repeated:
+            best = num
+            repeated = repeats
+
+    return best

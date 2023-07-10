@@ -1,4 +1,3 @@
-import cv2
 from colour import print_numbers_painting
 from main import image
 
