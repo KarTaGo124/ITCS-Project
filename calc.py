@@ -1,5 +1,3 @@
-
-
 def euclidean_distance(array1: list, array2: list):
     """
     Calculate distances with Euclidean formula.
