@@ -1,18 +1,15 @@
 
 
-def new_matrix(size, fill_value=None):
+def new_matrix(size):
     """
     Create a new simple matrix.
     @OcZi
     :param size: size of 2nd dimension.
-    :param fill_value: value to fill 2nd dimension.
     :return: matrix of empty (or filled) arrays.
     """
     arr = []
     for _ in range(size):
         sub = []
-        if fill_value is not None:
-            sub.append(fill_value)
         arr.append(sub)
     return arr
 
