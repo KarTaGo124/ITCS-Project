@@ -2,18 +2,6 @@ import calc
 import main
 
 
-# Target
-# Key value:
-# "digit":euclidean_distance output here
-# FIXME: less distance == more probability??
-# Example:
-# {
-# "1":20,
-# "2":30
-# "4":5
-# }
-
-
 def dict_sorted_digits(to_compare: dict[str, list]):
     ordered_list = sorted(to_compare.items(), key=lambda item: item[1])
 

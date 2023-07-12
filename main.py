@@ -16,10 +16,12 @@ average_number = arrays.new_matrix(10)
 # Constante de pixeles por dimensión
 PIXELS = 8
 
+# Numbers
 for i in range(len(digits.target)):
     new_matrix = cv2.resize(digits.images[i], (PIXELS, PIXELS))
     numbers[digits.target[i]].append(new_matrix)
 
+# Average number
 for i in range(len(average_number)):
     average_number[i] = arrays.matrix_mean(numbers[i], size=PIXELS)
 
@@ -30,7 +32,7 @@ def digit_by_index(i: int):
 
 def read_number_image():
     # Usamos cv2.imread para leer la imagen en escala de grises
-    img_array = cv2.imread("image.png", cv2.IMREAD_GRAYSCALE)
+    img_array = cv2.imread("numbers/one.JPG", cv2.IMREAD_GRAYSCALE)
     # Usamos cv2.resize para cambiar el tamaño de la imagen a 8x8
     nueva_img = cv2.resize(img_array, (8, 8))
 
@@ -98,11 +100,9 @@ def elem_matches(array):
                 else:
                     matches[elem1] += 1
 
-    best = -1
-    repeated = -1
+    best = repeated = -1
     for num, repeats in matches.items():
         if repeats > 1 and repeats > repeated:
             best = num
             repeated = repeats
-
     return best

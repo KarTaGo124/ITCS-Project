@@ -32,4 +32,3 @@ def matrix_mean(matrices, size: int = 8):
     mean = [[int(round(initial_matrix[i][j] / matrices_size)) for j in range(size)] for i in range(size)]
 
     return mean
-
